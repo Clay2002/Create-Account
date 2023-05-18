@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If else project</title>
+</head>
+<body>
+    
+
+
+<div id="title">If Else Project Using Local Storage</div>
+
+
+<div id = "container-1">Make An Account
+
+<div id = "sign-up-title">
+
+
+<div id ="user-input-1">Create A UserName
+<br>
+    <input oninput = "getValue2();" type = "text" id = "input1"placeholder = "Make UserName">
+
+</div>
+
+
+<div  id ="user-input-2">Create A Password 
+<br> 
+    <input oninput = "getValue();" type = "password" id = "input2" placeholder = "Create Password"> <button onclick = "HideShow()" id ="show">show</button>
+    <div id="color-box"></div>
+  
+
+    <div id = "message"></div>
+    <div id = "message2"></div>
+</div>
+
+</div>
+
+
+
+
+
+<button type = "button" id ="buttonOne" onclick = "save();" >Create Account</button>
+</div>
+
+
+
+
+<div id = "container-2">
+
+    <div id = "title-2">Login In</div>
+
+    <div   id = "username2">UserName</div>
+
+    <input   id = "input4" placeholder = "UserName">
+
+    <div id = "password2">Password</div>
+
+    <input  id = "input3" type = "password" placeholder = "Password"> <button onclick = "HideShow2()"id ="show2">show</button>
+    <br>
+    <button onclick = "saved();" id = "signin">Login</button>
+
+    <div id ="message3"></div>
+    <div id ="message4"></div>
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+<style>
+
+
+
+
+body {
+background-color:rgb(158, 214, 214);
+}
+
+#title, #title-2{
+
+font-weight: bold;
+font-size: 40px;
+text-align: center;
+
+}
+
+#signin{
+    margin-top: 10px;
+}
+
+#show{
+
+    position:absolute;
+    margin-top: 8px;
+    margin-left: 2px;
+
+}
+
+#show2 {
+    position:absolute;
+    margin-left: 2px;
+
+
+}
+
+#container-1{
+
+border: black solid 2px;
+background-color: rgb(49, 126, 103);
+padding: 10px;
+margin: 10px;
+font-weight: bold;
+font-size: 25px;
+text-align: center;
+margin-top: 50px;
+
+
+}
+
+
+
+#sign-up-title{
+
+border: black solid 2px;
+background-color: rgb(49, 126, 103);
+padding: 10px;
+margin: 10px;
+font-weight: bold;
+font-size: 25px;
+text-align: center;
+margin-top: 50px;
+margin-bottom: 50px;
+
+
+}
+
+
+
+#color-box{
+
+
+    background-color: rgb(255, 253, 253);
+    width: 25px;
+    height: 25px;
+    margin: auto;
+    text-align: center;
+    margin-top: 6px;
+  
+    
+}
+
+#container-2 {
+
+    border: solid black 2px;
+    text-align: center;
+}
+
+
+#username2, #password2{
+
+
+font-size: 25px;
+
+
+}
+
+
+</style>
+
+<script>
+
+
+
+//local storage function to get both user inputs 
+
+function save(){
+
+let userName = document.getElementById("input1").value;
+let password = document.getElementById("input2").value;
+
+
+console.log("username69")
+
+const savedUserName = localStorage.setItem("myUserName", userName);
+const savedPassword = localStorage.setItem("myPassword", password);
+
+
+
+
+const container1 = document.getElementById("container-1");
+container1.remove();
+document.getElementById('container-2').style.visibility = 'visible';
+
+
+
+
+console.log("username: "+ userName)
+console.log("password: "+ password)
+
+
+
+
+
+if(document.getElementById("input4").value === savedUser){
+console.log("correct")
+
+
+    
+};
+
+
+
+};
+
+
+function saved(){
+
+let username69 = document.getElementById("input4").value;
+let password69 = document.getElementById("input3").value;
+let savedUser = localStorage.getItem("myUserName")
+let savedPassword = localStorage.getItem("myPassword")
+let retry = document.getElementById("message3");
+let retry2 = document.getElementById("message4");
+let container2 = document.getElementById("container-2")
+console.log(savedUser)
+
+
+
+console.log(username69)
+
+if (username69 === savedUser && savedPassword === password69 ){
+
+
+    container2.remove();
+console.log("both are rgiht!")
+
+};
+
+if (username69 === savedUser){
+
+
+    retry.innerHTML = "Correct UserName!"
+
+} else retry.innerHTML = "in-correct username! Try Again!"
+
+
+if(savedPassword === password69){
+
+    retry2.innerHTML = "Correct PassWord!"
+} else retry2.innerHTML = "in-correct password! Try Again!"
+
+
+};
+
+
+
+
+
+////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+//This function is for the username to display messages on screen for user to follow
+
+function getValue2(){
+
+const output = document.getElementById("message");
+const U = document.getElementById("input1").value
+
+
+if ( U.length <= 8 )
+{
+    output.innerText = "UserName must be 8 characters long"
+
+}
+if ( U.length >= 8 )
+{
+    output.innerText = ""
+
+}
+if ( U.length <= 0 )
+{
+    output.innerText = ""
+
+}
+};
+////////////////////////////////////////////////////////////
+
+
+
+
+
+function getValue(){
+
+
+let password = document.getElementById("input2");
+let pValue = password.value;
+
+
+
+//4 or less charters will be red
+if (pValue.length <= 5){
+
+    const colorBox = document.getElementById("color-box");
+    const weak = colorBox.style.backgroundColor = "red";
+
+}
+
+
+//0 charters will always be white
+if (pValue.length <= 0){
+
+const colorBox = document.getElementById("color-box");
+const weak = colorBox.style.backgroundColor = "white";
+};
+
+
+//5 charters or more will be orange
+if (pValue.length >= 5){
+
+    const colorBox = document.getElementById("color-box");
+    const weak = colorBox.style.backgroundColor = "orange";
+
+};
+
+
+
+//8 or more charters will be green
+
+if (pValue.length >= 8){
+
+    const colorBox = document.getElementById("color-box");
+    const weak = colorBox.style.backgroundColor = "green";
+
+};
+
+//will stay green
+if (pValue.length >= 10){
+
+    const colorBox = document.getElementById("color-box");
+    const weak = colorBox.style.backgroundColor = "green";
+
+};
+
+
+
+
+
+};
+
+
+var button = document.getElementById("buttonOne");
+button.disabled = true;
+
+
+document.getElementById('container-2').style.visibility = 'hidden';
+
+
+
+
+//button show and hide password function
+
+
+function HideShow(){
+
+const button1 = document.getElementById("show");
+const password = document.getElementById("input2");
+
+
+
+if (password.type === "password"){
+
+    password.type ="text";
+}
+
+
+else if (password.type === "text"){
+
+password.type ="password";
+}
+
+
+if (button1.innerHTML === "show"){
+    
+    button1.innerHTML = "hide";
+
+
+} else if (button1.innerHTML === "hide")
+
+{
+
+    button1.innerHTML = "show";
+
+}
+
+
+
+}
+
+function HideShow2(){
+
+const button2 = document.getElementById("show2");
+const password2 = document.getElementById("input3");
+
+
+if (password2.type === "password"){
+
+password2.type ="text";
+}
+
+
+else if (password2.type === "text"){
+
+password2.type ="password";
+}
+
+
+if (button2.innerHTML === "show"){
+
+button2.innerHTML = "hide";
+
+
+} else if (button2.innerHTML === "hide")
+
+{
+
+button2.innerHTML = "show";
+
+}
+
+
+
+}
+
+///////////////////////////////////////////
+
+
+
+</script>
